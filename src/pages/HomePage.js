@@ -6,7 +6,7 @@ import { Link, useRouteMatch } from 'react-router-dom';
 import { fetchTrendingMovies } from '../services/movies-api';
 
 export default function HomeView() {
-  const { url } = useRouteMatch();
+  // const { url } = useRouteMatch();
   const [movies, setMovies] = useState(null);
 
   // const API_KEY = "9591f4746fdeff1373a9d81bfa034b09";
@@ -24,7 +24,7 @@ export default function HomeView() {
         {movies &&
           movies.map(movie => (
             <li key={movie.id}>
-              <Link to={`${url}${movie.id}`}>{movie.title}</Link>
+              <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
             </li>
           ))}
       </ul>

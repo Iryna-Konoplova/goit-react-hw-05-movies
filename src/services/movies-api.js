@@ -11,7 +11,9 @@ const fetchTrendingMovies = () => {
 
 const fetchMovies = movieId => {
   return axios
-    .get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}`)
+    .get(
+      `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`,
+    )
     .then(({ data }) => data);
 };
 

@@ -1,51 +1,37 @@
 // Модули
 import { Switch, Route } from 'react-router';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 
 // Компоненты
-import HomeView from './views/HomeView';
-import MoviesView from './views/MoviesView';
-import NotFoundView from './views/NotFoundView';
-import MovieDetailsPage from './components/MovieDetailsPage';
+import HomePage from './pages/HomePage';
+import MoviesPage from './pages/MoviesPage';
+import NotFoundPage from './pages/NotFoundPage';
+import MovieDetailsPage from './pages/MovieDetailsPage';
+import Navigation from './components/Navigation/Navigation';
 
 // Стили
-import styles from './App.module.css';
+// import styles from './App.module.css';
 
 export default function App() {
   return (
     <div>
-      <NavLink
-        exact
-        to="/"
-        className={styles.link}
-        activeClassName={styles.activeLink}
-      >
-        Home
-      </NavLink>
-
-      <NavLink
-        to="/movies"
-        className={styles.link}
-        activeClassName={styles.activeLink}
-      >
-        Movies
-      </NavLink>
+      <Navigation />
 
       <Switch>
         <Route path="/" exact>
-          <HomeView />
+          <HomePage />
         </Route>
 
-        <Route path="/movies">
-          <MoviesView />
+        <Route path="/movies" exact>
+          <MoviesPage />
         </Route>
 
-        <Route path="/:moviesId">
+        <Route path="/movies/:movieId">
           <MovieDetailsPage />
         </Route>
 
         <Route>
-          <NotFoundView />
+          <NotFoundPage />
         </Route>
       </Switch>
     </div>

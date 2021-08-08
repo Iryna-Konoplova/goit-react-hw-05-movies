@@ -1,4 +1,4 @@
-.link {
+/* .link {
   display: inline-block;
   text-decoration: none;
   padding: 12px;
@@ -9,4 +9,4 @@
 .activeLink {
   composes: link;
   color: rgb(241, 70, 136);
-}
+} */
