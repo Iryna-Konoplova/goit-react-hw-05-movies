@@ -1,25 +1,23 @@
 // Модули
 import { useState, useEffect } from 'react';
-import { Link, useRouteMatch } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-import { fetchTrendingMovies } from '../services/movies-api';
+// Компоненты
+import { fetchTrendingMovies } from '../../services/movies-api';
+
+// Стили
+import styles from './homePage.module.css';
 
 export default function HomeView() {
-  // const { url } = useRouteMatch();
   const [movies, setMovies] = useState(null);
 
-  // const API_KEY = "9591f4746fdeff1373a9d81bfa034b09";
-  // fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`)
-  //     .then(res => res.json())
-  //     .then(console.log);
   useEffect(() => {
     fetchTrendingMovies().then(setMovies);
   }, []);
 
   return (
     <>
-      <h1>Trending today</h1>
+      <h2 className={styles.title}>Trending today</h2>
       <ul>
         {movies &&
           movies.map(movie => (

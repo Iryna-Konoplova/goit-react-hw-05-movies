@@ -3,10 +3,10 @@ import { Switch, Route } from 'react-router';
 // import { NavLink } from 'react-router-dom';
 
 // Компоненты
-import HomePage from './pages/HomePage';
+import HomePage from './pages/HomePage/HomePage';
 import MoviesPage from './pages/MoviesPage';
 import NotFoundPage from './pages/NotFoundPage';
-import MovieDetailsPage from './pages/MovieDetailsPage';
+import MovieDetailsPage from './pages/MovieDetailsPage/MovieDetailsPage';
 import Navigation from './components/Navigation/Navigation';
 
 // Стили
