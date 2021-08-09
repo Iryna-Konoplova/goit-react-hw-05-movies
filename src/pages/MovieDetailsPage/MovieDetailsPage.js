@@ -1,7 +1,7 @@
 // Модули
 import { NavLink, Route, useRouteMatch } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router';
+import { useParams, useLocation, useHistory } from 'react-router';
 
 // Компоненты
 import { fetchMovies } from '../../services/movies-api';
@@ -12,6 +12,8 @@ import Reviews from '../../components/Reviews/Reviews';
 import styles from './movieDetailsPage.module.css';
 
 export default function MovieDetailsPage() {
+  const history = useHistory();
+  const location = useLocation();
   const { movieId } = useParams();
   const { url, path } = useRouteMatch();
   const [movie, setMovie] = useState(null);
@@ -20,9 +22,13 @@ export default function MovieDetailsPage() {
     fetchMovies(movieId).then(setMovie);
   }, [movieId]);
 
+  const onGoBack = () => {
+    history.push(location?.state?.from ?? '/');
+  };
+
   return (
     <div className={styles.movieDetailsPage}>
-      <button onClick={() => {}}>Go Back</button>
+      <button onClick={onGoBack}>Go Back</button>
 
       {movie && (
         <div className={styles.conteiner}>
