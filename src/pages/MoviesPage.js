@@ -7,9 +7,6 @@ import { useLocation } from 'react-router';
 import { fetchMoviesByQuery } from '../services/movies-api';
 import Searchbar from '../components/Searchbar/Searchbar';
 
-// Стили
-// import styles from '../Searchbar/searchbar.module.css';
-
 export default function MoviesPage() {
   const location = useLocation();
   const { url } = useRouteMatch();
@@ -40,7 +37,6 @@ export default function MoviesPage() {
         {moviesByQuery &&
           moviesByQuery.map(movie => (
             <li key={movie.id}>
-              {/* <Link to={`${url}/${movie.id}`}>{movie.title}</Link> */}
               <Link
                 to={{
                   pathname: `${url}/${movie.id}`,

@@ -1,39 +1,50 @@
 // Модули
 import { Switch, Route } from 'react-router';
-// import { NavLink } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
 
 // Компоненты
-import HomePage from './pages/HomePage/HomePage';
-import MoviesPage from './pages/MoviesPage';
-import NotFoundPage from './pages/NotFoundPage';
-import MovieDetailsPage from './pages/MovieDetailsPage/MovieDetailsPage';
 import Navigation from './components/Navigation/Navigation';
+import PageLoader from './components/Loader/Loader';
 
-// Стили
-// import styles from './App.module.css';
+const HomePage = lazy(() =>
+  import('./pages/HomePage/HomePage' /* webpackChunkName: "home-page" */),
+);
+const MoviesPage = lazy(() =>
+  import('./pages/MoviesPage' /* webpackChunkName: "movies-page" */),
+);
+const MovieDetailsPage = lazy(() =>
+  import(
+    './pages/MovieDetailsPage/MovieDetailsPage' /* webpackChunkName: "movie-details-page" */
+  ),
+);
+const NotFoundPage = lazy(() =>
+  import('./pages/NotFoundPage' /* webpackChunkName: "not-found-page" */),
+);
 
 export default function App() {
   return (
     <div>
       <Navigation />
 
-      <Switch>
-        <Route path="/" exact>
-          <HomePage />
-        </Route>
+      <Suspense fallback={<PageLoader />}>
+        <Switch>
+          <Route path="/" exact>
+            <HomePage />
+          </Route>
 
-        <Route path="/movies" exact>
-          <MoviesPage />
-        </Route>
+          <Route path="/movies" exact>
+            <MoviesPage />
+          </Route>
 
-        <Route path="/movies/:movieId">
-          <MovieDetailsPage />
-        </Route>
+          <Route path="/movies/:movieId">
+            <MovieDetailsPage />
+          </Route>
 
-        <Route>
-          <NotFoundPage />
-        </Route>
-      </Switch>
+          <Route>
+            <NotFoundPage />
+          </Route>
+        </Switch>
+      </Suspense>
     </div>
   );
 }
