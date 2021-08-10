@@ -1,16 +1,18 @@
 // Модули
 import { useState, useEffect } from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
-import { useLocation } from 'react-router';
+import { useHistory, useLocation } from 'react-router';
 
 // Компоненты
 import { fetchMoviesByQuery } from '../services/movies-api';
 import Searchbar from '../components/Searchbar/Searchbar';
 
 export default function MoviesPage() {
+  const history = useHistory();
   const location = useLocation();
   const { url } = useRouteMatch();
-  const [query, setQuery] = useState('');
+  const queryMovies = new URLSearchParams(location.search).get('queryBy');
+  const [query, setQuery] = useState(queryMovies || '');
   const [moviesByQuery, setMoviesByQuery] = useState(null);
   const [error, setError] = useState(null);
 
@@ -23,6 +25,10 @@ export default function MoviesPage() {
 
   const onChangeQuery = query => {
     setQuery(query);
+    history.push({
+      ...location,
+      search: `queryBy=${query}`,
+    });
     setMoviesByQuery(null);
     setError(null);
   };

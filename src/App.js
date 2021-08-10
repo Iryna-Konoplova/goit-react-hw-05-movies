@@ -1,5 +1,5 @@
 // Модули
-import { Switch, Route } from 'react-router';
+import { Switch, Route, Redirect } from 'react-router';
 import { lazy, Suspense } from 'react';
 
 // Компоненты
@@ -17,9 +17,9 @@ const MovieDetailsPage = lazy(() =>
     './pages/MovieDetailsPage/MovieDetailsPage' /* webpackChunkName: "movie-details-page" */
   ),
 );
-const NotFoundPage = lazy(() =>
-  import('./pages/NotFoundPage' /* webpackChunkName: "not-found-page" */),
-);
+// const NotFoundPage = lazy(() =>
+//   import('./pages/NotFoundPage' /* webpackChunkName: "not-found-page" */),
+// );
 
 export default function App() {
   return (
@@ -40,9 +40,11 @@ export default function App() {
             <MovieDetailsPage />
           </Route>
 
-          <Route>
+          <Redirect to="/" />
+
+          {/* <Route>
             <NotFoundPage />
-          </Route>
+          </Route> */}
         </Switch>
       </Suspense>
     </div>
