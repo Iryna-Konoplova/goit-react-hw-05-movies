@@ -5,6 +5,9 @@ import { useParams } from 'react-router-dom';
 // Компоненты
 import { fetchAboutActors } from '../../services/movies-api';
 
+// Стили
+import styles from './cast.module.css';
+
 export default function Cast() {
   const { movieId } = useParams();
   const [cast, setCast] = useState(null);
@@ -14,20 +17,26 @@ export default function Cast() {
   }, [movieId]);
 
   return (
-    <>
-      {cast &&
-        cast.map(actor => (
-          <li key={actor.id}>
-            {actor.profile_path && (
-              <img
-                src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}
-                alt={actor.name}
-              />
-            )}
-            <p>{actor.name}</p>
-            <p>{actor.character}</p>
-          </li>
-        ))}
-    </>
+    <div className={styles.container}>
+      <ul className={styles.cardSet}>
+        {cast &&
+          cast.map(actor => (
+            <li key={actor.id} className={styles.item}>
+              <article className={styles.card}>
+                {actor.profile_path && (
+                  <div className={styles.cardThumb}>
+                    <img
+                      src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}
+                      alt={actor.name}
+                    />
+                  </div>
+                )}
+                <p className={styles.actorName}>{actor.name}</p>
+                <p className={styles.actorName}>{actor.character}</p>
+              </article>
+            </li>
+          ))}
+      </ul>
+    </div>
   );
 }

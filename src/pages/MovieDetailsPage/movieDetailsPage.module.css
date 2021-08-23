@@ -1,5 +1,12 @@
+/* img {
+  display: block;
+  min-width: 100%;
+  height: auto;
+} */
+
 .movieDetailsPage {
-  padding: 12px;
+  /* width: 1280px; */
+  padding: 20px;
 }
 
 .conteiner {
@@ -8,5 +15,24 @@
 }
 
 .movieDetails {
+  width: 600px;
   margin-left: 30px;
+}
+
+.imgMovie {
+  width: 250px;
+  height: auto;
+}
+
+.button {
+  width: 80px;
+  height: 30px;
+  border: none;
+  background-color: rgb(48, 19, 95);
+  border-radius: 5px;
+  color: rgb(179, 14, 170);
+}
+
+.title {
+  color: rgb(48, 19, 95);
 }

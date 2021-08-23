@@ -1,20 +1,17 @@
 .navigation {
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: rgb(202, 198, 198);
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
-    1px 4px 6px rgba(0, 0, 0, 0.16);
+  background-color: rgb(48, 19, 95);
 }
 
 .link {
   display: inline-block;
   text-decoration: none;
-  padding: 12px;
+  padding: 20px;
   font-weight: 500;
   font-size: 18px;
+  color: rgb(159, 137, 182);
 }
 
 .activeLink {
   composes: link;
-  color: rgb(241, 70, 136);
+  color: rgb(179, 14, 170);
 }

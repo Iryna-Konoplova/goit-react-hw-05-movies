@@ -1,5 +1,5 @@
 :root {
-  --card-set-gap: 20px;
+  --card-set-gap: 25px;
 }
 
 .img {
@@ -24,7 +24,7 @@ body {
 }
 
 .container {
-  width: 1200px;
+  width: 1280px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
@@ -46,9 +46,10 @@ body {
 }
 
 .item {
-  flex-basis: calc(100% / 4 - var(--card-set-gap));
+  flex-basis: calc(100% / 6 - var(--card-set-gap));
   margin-left: var(--card-set-gap);
   margin-top: var(--card-set-gap);
+  /* padding: ; */
   border-radius: 10px;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
@@ -62,4 +63,13 @@ body {
   text-align: center;
   font-size: 18 px;
   color: rgb(48, 19, 95);
+}
+
+.cardThumb {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.actorName {
+  text-align: center;
 }
